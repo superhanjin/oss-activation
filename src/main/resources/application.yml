@@ -69,4 +69,4 @@ spring:
 
 api:
   url:
-    scheduling: http://scheduling:8080
+    scheduling: http://oss-scheduling:8080

@@ -22,9 +22,6 @@ public class Activation {
     @PostPersist
     public void onPostPersist(){
         if(this.getActivationState().equals("InitiateActivation")) {
-            ActivationCompleted activationCompleted = new ActivationCompleted();
-            BeanUtils.copyProperties(this, activationCompleted);
-            activationCompleted.publishAfterCommit();
 
             //Following code causes dependency to external APIs
             // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
@@ -42,6 +39,11 @@ public class Activation {
 
             ActivationApplication.applicationContext.getBean(oss.external.SchedulingService.class)
                     .initiateSchedule(scheduling);
+
+            ActivationCompleted activationCompleted = new ActivationCompleted();
+            BeanUtils.copyProperties(this, activationCompleted);
+            activationCompleted.publishAfterCommit();
+
         }else {
             System.out.println("#################### Unknown Command is Called ####################");
         }

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: activation
-          image: username/activation:latest
+          image: 676906203200.dkr.ecr.ap-northeast-2.amazonaws.com/oss-activation:v1
           ports:
             - containerPort: 8080
           readinessProbe:

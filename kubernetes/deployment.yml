@@ -4,6 +4,7 @@ metadata:
   name: activation
   labels:
     app: activation
+  namespace: oss
 spec:
   replicas: 1
   selector:

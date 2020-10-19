@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: activation
+  name: oss-activation
   labels:
-    app: activation
+    app: oss-activation
   namespace: oss
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: activation
+      app: oss-activation
   template:
     metadata:
       labels:
-        app: activation
+        app: oss-activation
     spec:
       containers:
-        - name: activation
+        - name: oss-activation
           image: 496278789073.dkr.ecr.ap-northeast-2.amazonaws.com/oss-activation:v1
           ports:
             - containerPort: 8080
@@ -35,4 +35,4 @@ spec:
             initialDelaySeconds: 120
             timeoutSeconds: 2
             periodSeconds: 5
-            failure
+            failureThreshold: 10
